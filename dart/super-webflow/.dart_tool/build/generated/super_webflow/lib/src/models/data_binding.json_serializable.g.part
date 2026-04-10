@@ -1,0 +1,142 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$DataConditionImpl _$$DataConditionImplFromJson(Map<String, dynamic> json) =>
+    _$DataConditionImpl(
+      field: json['field'] as String,
+      operator: json['operator'] as String,
+      value: json['value'],
+      or: (json['or'] as List<dynamic>?)
+          ?.map((e) => DataCondition.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      and: (json['and'] as List<dynamic>?)
+          ?.map((e) => DataCondition.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$DataConditionImplToJson(_$DataConditionImpl instance) =>
+    <String, dynamic>{
+      'field': instance.field,
+      'operator': instance.operator,
+      'value': instance.value,
+      'or': instance.or,
+      'and': instance.and,
+    };
+
+_$DataBindingSortImpl _$$DataBindingSortImplFromJson(
+        Map<String, dynamic> json) =>
+    _$DataBindingSortImpl(
+      field: json['field'] as String,
+      direction: json['direction'] as String,
+    );
+
+Map<String, dynamic> _$$DataBindingSortImplToJson(
+        _$DataBindingSortImpl instance) =>
+    <String, dynamic>{
+      'field': instance.field,
+      'direction': instance.direction,
+    };
+
+_$DataBindingImpl _$$DataBindingImplFromJson(Map<String, dynamic> json) =>
+    _$DataBindingImpl(
+      field: json['field'] as String?,
+      listField: json['listField'] as String?,
+      itemAlias: json['itemAlias'] as String? ?? 'item',
+      indexAlias: json['indexAlias'] as String? ?? 'index',
+      transform: json['transform'],
+      fallback: json['fallback'],
+      bindAttributes: (json['bindAttributes'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
+      limit: (json['limit'] as num?)?.toInt(),
+      sort: json['sort'] == null
+          ? null
+          : DataBindingSort.fromJson(json['sort'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$DataBindingImplToJson(_$DataBindingImpl instance) =>
+    <String, dynamic>{
+      'field': instance.field,
+      'listField': instance.listField,
+      'itemAlias': instance.itemAlias,
+      'indexAlias': instance.indexAlias,
+      'transform': instance.transform,
+      'fallback': instance.fallback,
+      'bindAttributes': instance.bindAttributes,
+      'limit': instance.limit,
+      'sort': instance.sort,
+    };
+
+_$DataFieldOptionImpl _$$DataFieldOptionImplFromJson(
+        Map<String, dynamic> json) =>
+    _$DataFieldOptionImpl(
+      value: json['value'] as String,
+      label: json['label'] as String,
+    );
+
+Map<String, dynamic> _$$DataFieldOptionImplToJson(
+        _$DataFieldOptionImpl instance) =>
+    <String, dynamic>{
+      'value': instance.value,
+      'label': instance.label,
+    };
+
+_$FieldValidationImpl _$$FieldValidationImplFromJson(
+        Map<String, dynamic> json) =>
+    _$FieldValidationImpl(
+      minLength: (json['minLength'] as num?)?.toInt(),
+      maxLength: (json['maxLength'] as num?)?.toInt(),
+      min: (json['min'] as num?)?.toDouble(),
+      max: (json['max'] as num?)?.toDouble(),
+      pattern: json['pattern'] as String?,
+      options: (json['options'] as List<dynamic>?)
+          ?.map((e) => DataFieldOption.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      itemSchema: (json['itemSchema'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, DataFieldDef.fromJson(e as Map<String, dynamic>)),
+      ),
+      fields: (json['fields'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, DataFieldDef.fromJson(e as Map<String, dynamic>)),
+      ),
+    );
+
+Map<String, dynamic> _$$FieldValidationImplToJson(
+        _$FieldValidationImpl instance) =>
+    <String, dynamic>{
+      'minLength': instance.minLength,
+      'maxLength': instance.maxLength,
+      'min': instance.min,
+      'max': instance.max,
+      'pattern': instance.pattern,
+      'options': instance.options,
+      'itemSchema': instance.itemSchema,
+      'fields': instance.fields,
+    };
+
+_$DataFieldDefImpl _$$DataFieldDefImplFromJson(Map<String, dynamic> json) =>
+    _$DataFieldDefImpl(
+      type: json['type'] as String,
+      required: json['required'] as bool?,
+      label: json['label'] as String,
+      hint: json['hint'] as String?,
+      defaultValue: json['default'],
+      group: json['group'] as String?,
+      order: (json['order'] as num?)?.toInt(),
+      validation: json['validation'] == null
+          ? null
+          : FieldValidation.fromJson(
+              json['validation'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$DataFieldDefImplToJson(_$DataFieldDefImpl instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'required': instance.required,
+      'label': instance.label,
+      'hint': instance.hint,
+      'default': instance.defaultValue,
+      'group': instance.group,
+      'order': instance.order,
+      'validation': instance.validation,
+    };

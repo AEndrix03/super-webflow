@@ -1,0 +1,51 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$LayoutPropsImpl _$$LayoutPropsImplFromJson(Map<String, dynamic> json) =>
+    _$LayoutPropsImpl(
+      direction: json['direction'] as String?,
+      wrap: json['wrap'],
+      justifyContent: json['justifyContent'] as String?,
+      alignItems: json['alignItems'] as String?,
+      alignContent: json['alignContent'] as String?,
+      alignSelf: json['alignSelf'] as String?,
+      flex: (json['flex'] as num?)?.toDouble(),
+      flexGrow: (json['flexGrow'] as num?)?.toDouble(),
+      flexShrink: (json['flexShrink'] as num?)?.toDouble(),
+      flexBasis: const SizeValueConverter().fromJson(json['flexBasis']),
+      gap: const GapConverter().fromJson(json['gap']),
+      columns: json['columns'],
+      rows: json['rows'],
+      columnGap: (json['columnGap'] as num?)?.toDouble(),
+      rowGap: (json['rowGap'] as num?)?.toDouble(),
+      spanColumns: (json['spanColumns'] as num?)?.toInt(),
+      spanRows: (json['spanRows'] as num?)?.toInt(),
+      columnStart: json['columnStart'],
+      rowStart: json['rowStart'],
+      stackIndex: (json['stackIndex'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$$LayoutPropsImplToJson(_$LayoutPropsImpl instance) =>
+    <String, dynamic>{
+      'direction': instance.direction,
+      'wrap': instance.wrap,
+      'justifyContent': instance.justifyContent,
+      'alignItems': instance.alignItems,
+      'alignContent': instance.alignContent,
+      'alignSelf': instance.alignSelf,
+      'flex': instance.flex,
+      'flexGrow': instance.flexGrow,
+      'flexShrink': instance.flexShrink,
+      'flexBasis': const SizeValueConverter().toJson(instance.flexBasis),
+      'gap': const GapConverter().toJson(instance.gap),
+      'columns': instance.columns,
+      'rows': instance.rows,
+      'columnGap': instance.columnGap,
+      'rowGap': instance.rowGap,
+      'spanColumns': instance.spanColumns,
+      'spanRows': instance.spanRows,
+      'columnStart': instance.columnStart,
+      'rowStart': instance.rowStart,
+      'stackIndex': instance.stackIndex,
+    };

@@ -1,0 +1,288 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$TransitionDefImpl _$$TransitionDefImplFromJson(Map<String, dynamic> json) =>
+    _$TransitionDefImpl(
+      property: json['property'] as String,
+      duration: (json['duration'] as num).toInt(),
+      easing: json['easing'] as String?,
+      delay: (json['delay'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$$TransitionDefImplToJson(_$TransitionDefImpl instance) =>
+    <String, dynamic>{
+      'property': instance.property,
+      'duration': instance.duration,
+      'easing': instance.easing,
+      'delay': instance.delay,
+    };
+
+_$GradientStopImpl _$$GradientStopImplFromJson(Map<String, dynamic> json) =>
+    _$GradientStopImpl(
+      color: json['color'] as String,
+      position: (json['position'] as num).toDouble(),
+    );
+
+Map<String, dynamic> _$$GradientStopImplToJson(_$GradientStopImpl instance) =>
+    <String, dynamic>{
+      'color': instance.color,
+      'position': instance.position,
+    };
+
+_$GradientDefImpl _$$GradientDefImplFromJson(Map<String, dynamic> json) =>
+    _$GradientDefImpl(
+      type: json['type'] as String,
+      angle: (json['angle'] as num?)?.toDouble(),
+      stops: (json['stops'] as List<dynamic>)
+          .map((e) => GradientStop.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      radialShape: json['radialShape'] as String?,
+    );
+
+Map<String, dynamic> _$$GradientDefImplToJson(_$GradientDefImpl instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'angle': instance.angle,
+      'stops': instance.stops,
+      'radialShape': instance.radialShape,
+    };
+
+_$BorderDefImpl _$$BorderDefImplFromJson(Map<String, dynamic> json) =>
+    _$BorderDefImpl(
+      width: (json['width'] as num).toDouble(),
+      style: json['style'] as String?,
+      color: json['color'] as String,
+    );
+
+Map<String, dynamic> _$$BorderDefImplToJson(_$BorderDefImpl instance) =>
+    <String, dynamic>{
+      'width': instance.width,
+      'style': instance.style,
+      'color': instance.color,
+    };
+
+_$TransformDefImpl _$$TransformDefImplFromJson(Map<String, dynamic> json) =>
+    _$TransformDefImpl(
+      translateX: json['translateX'],
+      translateY: json['translateY'],
+      translateZ: json['translateZ'],
+      rotate: (json['rotate'] as num?)?.toDouble(),
+      rotateX: (json['rotateX'] as num?)?.toDouble(),
+      rotateY: (json['rotateY'] as num?)?.toDouble(),
+      scale: (json['scale'] as num?)?.toDouble(),
+      scaleX: (json['scaleX'] as num?)?.toDouble(),
+      scaleY: (json['scaleY'] as num?)?.toDouble(),
+      skewX: (json['skewX'] as num?)?.toDouble(),
+      skewY: (json['skewY'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$$TransformDefImplToJson(_$TransformDefImpl instance) =>
+    <String, dynamic>{
+      'translateX': instance.translateX,
+      'translateY': instance.translateY,
+      'translateZ': instance.translateZ,
+      'rotate': instance.rotate,
+      'rotateX': instance.rotateX,
+      'rotateY': instance.rotateY,
+      'scale': instance.scale,
+      'scaleX': instance.scaleX,
+      'scaleY': instance.scaleY,
+      'skewX': instance.skewX,
+      'skewY': instance.skewY,
+    };
+
+_$EntranceAnimationImpl _$$EntranceAnimationImplFromJson(
+        Map<String, dynamic> json) =>
+    _$EntranceAnimationImpl(
+      type: json['type'] as String,
+      duration: (json['duration'] as num).toInt(),
+      delay: (json['delay'] as num?)?.toInt(),
+      easing: json['easing'] as String?,
+      trigger: json['trigger'] as String? ?? 'page-load',
+    );
+
+Map<String, dynamic> _$$EntranceAnimationImplToJson(
+        _$EntranceAnimationImpl instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'duration': instance.duration,
+      'delay': instance.delay,
+      'easing': instance.easing,
+      'trigger': instance.trigger,
+    };
+
+_$StylePropsImpl _$$StylePropsImplFromJson(Map<String, dynamic> json) =>
+    _$StylePropsImpl(
+      width: const SizeValueConverter().fromJson(json['width']),
+      height: const SizeValueConverter().fromJson(json['height']),
+      minWidth: const SizeValueConverter().fromJson(json['minWidth']),
+      maxWidth: const SizeValueConverter().fromJson(json['maxWidth']),
+      minHeight: const SizeValueConverter().fromJson(json['minHeight']),
+      maxHeight: const SizeValueConverter().fromJson(json['maxHeight']),
+      aspectRatio: json['aspectRatio'] as String?,
+      padding: const SpacingConverter().fromJson(json['padding']),
+      paddingTop: (json['paddingTop'] as num?)?.toDouble(),
+      paddingRight: (json['paddingRight'] as num?)?.toDouble(),
+      paddingBottom: (json['paddingBottom'] as num?)?.toDouble(),
+      paddingLeft: (json['paddingLeft'] as num?)?.toDouble(),
+      paddingX: (json['paddingX'] as num?)?.toDouble(),
+      paddingY: (json['paddingY'] as num?)?.toDouble(),
+      margin: const SpacingConverter().fromJson(json['margin']),
+      marginTop: (json['marginTop'] as num?)?.toDouble(),
+      marginRight: (json['marginRight'] as num?)?.toDouble(),
+      marginBottom: (json['marginBottom'] as num?)?.toDouble(),
+      marginLeft: (json['marginLeft'] as num?)?.toDouble(),
+      marginX: (json['marginX'] as num?)?.toDouble(),
+      marginY: (json['marginY'] as num?)?.toDouble(),
+      backgroundColor: json['backgroundColor'] as String?,
+      backgroundGradient: json['backgroundGradient'] == null
+          ? null
+          : GradientDef.fromJson(
+              json['backgroundGradient'] as Map<String, dynamic>),
+      backgroundImage: json['backgroundImage'] as String?,
+      backgroundSize: json['backgroundSize'] as String?,
+      backgroundPosition: json['backgroundPosition'] as String?,
+      backgroundRepeat: json['backgroundRepeat'] as String?,
+      backgroundOverlay: json['backgroundOverlay'] as String?,
+      backdropBlur: (json['backdropBlur'] as num?)?.toDouble(),
+      color: json['color'] as String?,
+      fill: json['fill'] as String?,
+      stroke: json['stroke'] as String?,
+      strokeWidth: (json['strokeWidth'] as num?)?.toDouble(),
+      fontSize: const FontSizeConverter().fromJson(json['fontSize']),
+      fontWeight: json['fontWeight'],
+      fontFamily: json['fontFamily'] as String?,
+      fontStyle: json['fontStyle'] as String?,
+      lineHeight: (json['lineHeight'] as num?)?.toDouble(),
+      letterSpacing: (json['letterSpacing'] as num?)?.toDouble(),
+      textAlign: json['textAlign'] as String?,
+      textTransform: json['textTransform'] as String?,
+      textDecoration: json['textDecoration'] as String?,
+      textOverflow: json['textOverflow'] as String?,
+      whiteSpace: json['whiteSpace'] as String?,
+      wordBreak: json['wordBreak'] as String?,
+      lineClamp: (json['lineClamp'] as num?)?.toInt(),
+      border: json['border'] == null
+          ? null
+          : BorderDef.fromJson(json['border'] as Map<String, dynamic>),
+      borderTop: json['borderTop'] == null
+          ? null
+          : BorderDef.fromJson(json['borderTop'] as Map<String, dynamic>),
+      borderRight: json['borderRight'] == null
+          ? null
+          : BorderDef.fromJson(json['borderRight'] as Map<String, dynamic>),
+      borderBottom: json['borderBottom'] == null
+          ? null
+          : BorderDef.fromJson(json['borderBottom'] as Map<String, dynamic>),
+      borderLeft: json['borderLeft'] == null
+          ? null
+          : BorderDef.fromJson(json['borderLeft'] as Map<String, dynamic>),
+      borderRadius:
+          const BorderRadiusValueConverter().fromJson(json['borderRadius']),
+      outlineColor: json['outlineColor'] as String?,
+      outlineWidth: (json['outlineWidth'] as num?)?.toDouble(),
+      outlineOffset: (json['outlineOffset'] as num?)?.toDouble(),
+      shadow: const ShadowStyleConverter().fromJson(json['shadow']),
+      opacity: (json['opacity'] as num?)?.toDouble(),
+      overflow: json['overflow'] as String?,
+      overflowX: json['overflowX'] as String?,
+      overflowY: json['overflowY'] as String?,
+      cursor: json['cursor'] as String?,
+      userSelect: json['userSelect'] as String?,
+      transition: const TransitionStyleConverter().fromJson(json['transition']),
+      transform: json['transform'] == null
+          ? null
+          : TransformDef.fromJson(json['transform'] as Map<String, dynamic>),
+      position: json['position'] as String?,
+      top: const SizeValueConverter().fromJson(json['top']),
+      right: const SizeValueConverter().fromJson(json['right']),
+      bottom: const SizeValueConverter().fromJson(json['bottom']),
+      left: const SizeValueConverter().fromJson(json['left']),
+      zIndex: json['zIndex'],
+      display: json['display'] as String?,
+      visibility: json['visibility'] as String?,
+      entranceAnimation: json['entranceAnimation'] == null
+          ? null
+          : EntranceAnimation.fromJson(
+              json['entranceAnimation'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$StylePropsImplToJson(_$StylePropsImpl instance) =>
+    <String, dynamic>{
+      'width': const SizeValueConverter().toJson(instance.width),
+      'height': const SizeValueConverter().toJson(instance.height),
+      'minWidth': const SizeValueConverter().toJson(instance.minWidth),
+      'maxWidth': const SizeValueConverter().toJson(instance.maxWidth),
+      'minHeight': const SizeValueConverter().toJson(instance.minHeight),
+      'maxHeight': const SizeValueConverter().toJson(instance.maxHeight),
+      'aspectRatio': instance.aspectRatio,
+      'padding': const SpacingConverter().toJson(instance.padding),
+      'paddingTop': instance.paddingTop,
+      'paddingRight': instance.paddingRight,
+      'paddingBottom': instance.paddingBottom,
+      'paddingLeft': instance.paddingLeft,
+      'paddingX': instance.paddingX,
+      'paddingY': instance.paddingY,
+      'margin': const SpacingConverter().toJson(instance.margin),
+      'marginTop': instance.marginTop,
+      'marginRight': instance.marginRight,
+      'marginBottom': instance.marginBottom,
+      'marginLeft': instance.marginLeft,
+      'marginX': instance.marginX,
+      'marginY': instance.marginY,
+      'backgroundColor': instance.backgroundColor,
+      'backgroundGradient': instance.backgroundGradient,
+      'backgroundImage': instance.backgroundImage,
+      'backgroundSize': instance.backgroundSize,
+      'backgroundPosition': instance.backgroundPosition,
+      'backgroundRepeat': instance.backgroundRepeat,
+      'backgroundOverlay': instance.backgroundOverlay,
+      'backdropBlur': instance.backdropBlur,
+      'color': instance.color,
+      'fill': instance.fill,
+      'stroke': instance.stroke,
+      'strokeWidth': instance.strokeWidth,
+      'fontSize': const FontSizeConverter().toJson(instance.fontSize),
+      'fontWeight': instance.fontWeight,
+      'fontFamily': instance.fontFamily,
+      'fontStyle': instance.fontStyle,
+      'lineHeight': instance.lineHeight,
+      'letterSpacing': instance.letterSpacing,
+      'textAlign': instance.textAlign,
+      'textTransform': instance.textTransform,
+      'textDecoration': instance.textDecoration,
+      'textOverflow': instance.textOverflow,
+      'whiteSpace': instance.whiteSpace,
+      'wordBreak': instance.wordBreak,
+      'lineClamp': instance.lineClamp,
+      'border': instance.border,
+      'borderTop': instance.borderTop,
+      'borderRight': instance.borderRight,
+      'borderBottom': instance.borderBottom,
+      'borderLeft': instance.borderLeft,
+      'borderRadius':
+          const BorderRadiusValueConverter().toJson(instance.borderRadius),
+      'outlineColor': instance.outlineColor,
+      'outlineWidth': instance.outlineWidth,
+      'outlineOffset': instance.outlineOffset,
+      'shadow': const ShadowStyleConverter().toJson(instance.shadow),
+      'opacity': instance.opacity,
+      'overflow': instance.overflow,
+      'overflowX': instance.overflowX,
+      'overflowY': instance.overflowY,
+      'cursor': instance.cursor,
+      'userSelect': instance.userSelect,
+      'transition':
+          const TransitionStyleConverter().toJson(instance.transition),
+      'transform': instance.transform,
+      'position': instance.position,
+      'top': const SizeValueConverter().toJson(instance.top),
+      'right': const SizeValueConverter().toJson(instance.right),
+      'bottom': const SizeValueConverter().toJson(instance.bottom),
+      'left': const SizeValueConverter().toJson(instance.left),
+      'zIndex': instance.zIndex,
+      'display': instance.display,
+      'visibility': instance.visibility,
+      'entranceAnimation': instance.entranceAnimation,
+    };

@@ -1,0 +1,147 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$BuilderMetaImpl _$$BuilderMetaImplFromJson(Map<String, dynamic> json) =>
+    _$BuilderMetaImpl(
+      editable: json['editable'] as bool?,
+      resizable: json['resizable'] as bool?,
+      movable: json['movable'] as bool?,
+      deletable: json['deletable'] as bool?,
+      group: json['group'] as String?,
+      icon: json['icon'] as String?,
+      description: json['description'] as String?,
+      previewData: json['previewData'] as Map<String, dynamic>?,
+    );
+
+Map<String, dynamic> _$$BuilderMetaImplToJson(_$BuilderMetaImpl instance) =>
+    <String, dynamic>{
+      'editable': instance.editable,
+      'resizable': instance.resizable,
+      'movable': instance.movable,
+      'deletable': instance.deletable,
+      'group': instance.group,
+      'icon': instance.icon,
+      'description': instance.description,
+      'previewData': instance.previewData,
+    };
+
+_$ComponentNodeImpl _$$ComponentNodeImplFromJson(Map<String, dynamic> json) =>
+    _$ComponentNodeImpl(
+      id: json['id'] as String,
+      type: $enumDecode(_$ComponentTypeEnumMap, json['type']),
+      name: json['name'] as String?,
+      locked: json['locked'] as bool? ?? false,
+      children: (json['children'] as List<dynamic>?)
+          ?.map((e) => ComponentNode.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      props: json['props'] as Map<String, dynamic>?,
+      style: json['style'] == null
+          ? null
+          : StyleProps.fromJson(json['style'] as Map<String, dynamic>),
+      layout: json['layout'] == null
+          ? null
+          : LayoutProps.fromJson(json['layout'] as Map<String, dynamic>),
+      responsive: (json['responsive'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as Map<String, dynamic>),
+      ),
+      data: json['data'] == null
+          ? null
+          : DataBinding.fromJson(json['data'] as Map<String, dynamic>),
+      condition: json['condition'] == null
+          ? null
+          : DataCondition.fromJson(json['condition'] as Map<String, dynamic>),
+      interactions: (json['interactions'] as List<dynamic>?)
+          ?.map((e) => Interaction.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      role: json['role'] as String?,
+      ariaLabel: json['ariaLabel'] as String?,
+      ariaLive: json['ariaLive'] as String?,
+      tabIndex: (json['tabIndex'] as num?)?.toInt(),
+      builder: json['_builder'] == null
+          ? null
+          : BuilderMeta.fromJson(json['_builder'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$ComponentNodeImplToJson(_$ComponentNodeImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'type': _$ComponentTypeEnumMap[instance.type]!,
+      'name': instance.name,
+      'locked': instance.locked,
+      'children': instance.children,
+      'props': instance.props,
+      'style': instance.style,
+      'layout': instance.layout,
+      'responsive': instance.responsive,
+      'data': instance.data,
+      'condition': instance.condition,
+      'interactions': instance.interactions,
+      'role': instance.role,
+      'ariaLabel': instance.ariaLabel,
+      'ariaLive': instance.ariaLive,
+      'tabIndex': instance.tabIndex,
+      '_builder': instance.builder,
+    };
+
+const _$ComponentTypeEnumMap = {
+  ComponentType.container: 'container',
+  ComponentType.section: 'section',
+  ComponentType.row: 'row',
+  ComponentType.column: 'column',
+  ComponentType.grid: 'grid',
+  ComponentType.stack: 'stack',
+  ComponentType.scrollView: 'scroll-view',
+  ComponentType.pageWrapper: 'page-wrapper',
+  ComponentType.heading: 'heading',
+  ComponentType.paragraph: 'paragraph',
+  ComponentType.text: 'text',
+  ComponentType.label: 'label',
+  ComponentType.richText: 'rich-text',
+  ComponentType.code: 'code',
+  ComponentType.image: 'image',
+  ComponentType.video: 'video',
+  ComponentType.icon: 'icon',
+  ComponentType.avatar: 'avatar',
+  ComponentType.lottie: 'lottie',
+  ComponentType.divider: 'divider',
+  ComponentType.spacer: 'spacer',
+  ComponentType.badge: 'badge',
+  ComponentType.chip: 'chip',
+  ComponentType.tag: 'tag',
+  ComponentType.button: 'button',
+  ComponentType.link: 'link',
+  ComponentType.socialLinkItem: 'social-link-item',
+  ComponentType.navbar: 'navbar',
+  ComponentType.footer: 'footer',
+  ComponentType.breadcrumb: 'breadcrumb',
+  ComponentType.tabs: 'tabs',
+  ComponentType.pagination: 'pagination',
+  ComponentType.form: 'form',
+  ComponentType.input: 'input',
+  ComponentType.textarea: 'textarea',
+  ComponentType.select: 'select',
+  ComponentType.checkbox: 'checkbox',
+  ComponentType.radio: 'radio',
+  ComponentType.toggle: 'toggle',
+  ComponentType.fileUpload: 'file-upload',
+  ComponentType.contactForm: 'contact-form',
+  ComponentType.bookingWidget: 'booking-widget',
+  ComponentType.list: 'list',
+  ComponentType.accordion: 'accordion',
+  ComponentType.modal: 'modal',
+  ComponentType.tooltip: 'tooltip',
+  ComponentType.progressBar: 'progress-bar',
+  ComponentType.rating: 'rating',
+  ComponentType.hero: 'hero',
+  ComponentType.serviceCard: 'service-card',
+  ComponentType.pricingCard: 'pricing-card',
+  ComponentType.testimonial: 'testimonial',
+  ComponentType.coachStats: 'coach-stats',
+  ComponentType.certificationBadge: 'certification-badge',
+  ComponentType.photoGallery: 'photo-gallery',
+  ComponentType.reviewStars: 'review-stars',
+  ComponentType.socialLinks: 'social-links',
+  ComponentType.calendarWidget: 'calendar-widget',
+  ComponentType.beforeAfter: 'before-after',
+};

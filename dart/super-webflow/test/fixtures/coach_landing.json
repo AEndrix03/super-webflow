@@ -1,0 +1,946 @@
+﻿{
+  "$schema": "https://aredegalli.it/super-webflow/v1.0/template.schema.json",
+  "version": "1.0",
+  "id": "coach-landing",
+  "name": "Coach Landing Page",
+  "category": "fitness",
+  "tags": ["personal-trainer", "landing", "dark"],
+  "author": "official",
+
+  "theme": {
+    "id": "dark-violet",
+    "name": "Dark Violet",
+    "version": "1.0.0",
+    "colors": {
+      "primary": "#6C5CE7",
+      "primaryLight": "#A29BFE",
+      "primaryDark": "#4834D4",
+      "secondary": "#00B894",
+      "secondaryLight": "#55EFC4",
+      "secondaryDark": "#00876E",
+      "accent": "#FD79A8",
+      "accentLight": "#FDCFE2",
+      "background": "#0A0A0F",
+      "backgroundAlt": "#13131A",
+      "surface": "#1A1A26",
+      "surfaceAlt": "#252535",
+      "overlay": "rgba(0,0,0,0.65)",
+      "text": "#FFFFFF",
+      "textSecondary": "#A0A0B0",
+      "textMuted": "#6B6B80",
+      "textInverse": "#0A0A0F",
+      "textOnPrimary": "#FFFFFF",
+      "border": "#2A2A3A",
+      "borderStrong": "#3D3D55",
+      "borderFocus": "#6C5CE7",
+      "success": "#00B894",
+      "successLight": "#DCFFF6",
+      "warning": "#FDCB6E",
+      "warningLight": "#FFF8E7",
+      "danger": "#D63031",
+      "dangerLight": "#FFE8E8",
+      "info": "#0984E3",
+      "infoLight": "#E3F2FF"
+    },
+    "typography": {
+      "fonts": {
+        "heading": "Poppins",
+        "body": "Inter",
+        "mono": "JetBrains Mono"
+      },
+      "availableWeights": [400, 500, 600, 700],
+      "scale": {
+        "xs": 12,
+        "sm": 14,
+        "base": 16,
+        "lg": 18,
+        "xl": 20,
+        "2xl": 24,
+        "3xl": 30,
+        "4xl": 36,
+        "5xl": 48,
+        "6xl": 60,
+        "7xl": 72
+      },
+      "lineHeights": {
+        "xs": 1.5,
+        "sm": 1.5,
+        "base": 1.6,
+        "lg": 1.5,
+        "xl": 1.4,
+        "2xl": 1.3,
+        "3xl": 1.2,
+        "4xl": 1.1,
+        "5xl": 1.05,
+        "6xl": 1.0,
+        "7xl": 1.0
+      }
+    },
+    "spacing": {
+      "base": 4,
+      "scale": {
+        "0": 0,
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "5": 20,
+        "6": 24,
+        "8": 32,
+        "10": 40,
+        "12": 48,
+        "16": 64,
+        "20": 80,
+        "24": 96
+      }
+    },
+    "radii": {
+      "none": 0,
+      "xs": 2,
+      "sm": 4,
+      "md": 8,
+      "lg": 12,
+      "xl": 16,
+      "2xl": 24,
+      "3xl": 32,
+      "full": 9999
+    },
+    "shadows": {
+      "none": null,
+      "sm": {
+        "offsetX": 0,
+        "offsetY": 1,
+        "blur": 3,
+        "spread": 0,
+        "color": "rgba(0,0,0,0.25)"
+      },
+      "md": {
+        "offsetX": 0,
+        "offsetY": 4,
+        "blur": 12,
+        "spread": 0,
+        "color": "rgba(0,0,0,0.35)"
+      },
+      "lg": {
+        "offsetX": 0,
+        "offsetY": 8,
+        "blur": 24,
+        "spread": -2,
+        "color": "rgba(0,0,0,0.4)"
+      },
+      "xl": {
+        "offsetX": 0,
+        "offsetY": 16,
+        "blur": 48,
+        "spread": -4,
+        "color": "rgba(0,0,0,0.5)"
+      },
+      "inner": {
+        "offsetX": 0,
+        "offsetY": 2,
+        "blur": 4,
+        "spread": 0,
+        "color": "rgba(0,0,0,0.3)",
+        "inset": true
+      }
+    },
+    "transitions": {
+      "fast": 120,
+      "normal": 250,
+      "slow": 400,
+      "easing": {
+        "default": "ease",
+        "in": "ease-in",
+        "out": "ease-out",
+        "inOut": "ease-in-out",
+        "spring": "cubic-bezier(0.34,1.56,0.64,1)"
+      }
+    },
+    "zIndex": {
+      "base": 0,
+      "raised": 10,
+      "sticky": 50,
+      "overlay": 100,
+      "modal": 200,
+      "popup": 300,
+      "tooltip": 400,
+      "max": 9999
+    }
+  },
+
+  "meta": {
+    "title": "{{coach.fullName}} â€” Personal Trainer",
+    "description": "Programmi di allenamento personalizzati con risultati garantiti.",
+    "ogImage": "coach.avatar"
+  },
+
+  "dataSchema": {
+    "coach.fullName": {
+      "type": "string",
+      "required": true,
+      "label": "Nome completo",
+      "order": 1,
+      "group": "Profilo"
+    },
+    "coach.tagline": {
+      "type": "string",
+      "required": true,
+      "label": "Tagline",
+      "hint": "Max 100 caratteri.",
+      "validation": { "maxLength": 100 },
+      "order": 2,
+      "group": "Profilo"
+    },
+    "coach.avatar": {
+      "type": "image",
+      "required": true,
+      "label": "Foto profilo",
+      "order": 3,
+      "group": "Profilo"
+    },
+    "coach.heroBg": {
+      "type": "image",
+      "required": false,
+      "label": "Immagine sfondo hero",
+      "order": 4,
+      "group": "Profilo"
+    },
+    "coach.bio": {
+      "type": "richtext",
+      "required": false,
+      "label": "Biografia",
+      "order": 5,
+      "group": "Profilo"
+    },
+    "coach.isPro": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "label": "Account Pro (mostra CTA sui servizi)",
+      "order": 6,
+      "group": "Impostazioni"
+    },
+    "coach.services": {
+      "type": "list",
+      "required": false,
+      "label": "Servizi",
+      "order": 1,
+      "group": "Contenuti",
+      "validation": {
+        "itemSchema": {
+          "name": {
+            "type": "string",
+            "required": true,
+            "label": "Nome servizio"
+          },
+          "price": {
+            "type": "number",
+            "required": true,
+            "label": "Prezzo (â‚¬/ora)"
+          },
+          "description": {
+            "type": "string",
+            "required": false,
+            "label": "Descrizione"
+          },
+          "featured": {
+            "type": "boolean",
+            "required": false,
+            "label": "In evidenza"
+          }
+        }
+      }
+    },
+    "coach.testimonials": {
+      "type": "list",
+      "required": false,
+      "label": "Testimonianze",
+      "order": 2,
+      "group": "Contenuti",
+      "validation": {
+        "itemSchema": {
+          "text": {
+            "type": "string",
+            "required": true,
+            "label": "Testo testimonianza"
+          },
+          "author": {
+            "type": "string",
+            "required": true,
+            "label": "Nome cliente"
+          },
+          "role": {
+            "type": "string",
+            "required": false,
+            "label": "Ruolo / sport"
+          },
+          "rating": {
+            "type": "number",
+            "required": false,
+            "label": "Voto (1â€“5)"
+          }
+        }
+      }
+    },
+    "coach.stats": {
+      "type": "list",
+      "required": false,
+      "label": "Statistiche",
+      "order": 3,
+      "group": "Contenuti",
+      "validation": {
+        "itemSchema": {
+          "value": {
+            "type": "string",
+            "required": true,
+            "label": "Valore (es. '120+')"
+          },
+          "label": { "type": "string", "required": true, "label": "Etichetta" },
+          "suffix": { "type": "string", "required": false, "label": "Suffisso" }
+        }
+      }
+    },
+    "coach.socialLinks": {
+      "type": "list",
+      "required": false,
+      "label": "Social links",
+      "order": 4,
+      "group": "Contenuti",
+      "validation": {
+        "itemSchema": {
+          "network": {
+            "type": "select",
+            "required": true,
+            "label": "Piattaforma",
+            "validation": {
+              "options": [
+                { "value": "instagram", "label": "Instagram" },
+                { "value": "youtube", "label": "YouTube" },
+                { "value": "tiktok", "label": "TikTok" },
+                { "value": "linkedin", "label": "LinkedIn" },
+                { "value": "whatsapp", "label": "WhatsApp" },
+                { "value": "website", "label": "Sito web" }
+              ]
+            }
+          },
+          "url": { "type": "url", "required": true, "label": "URL" }
+        }
+      }
+    }
+  },
+
+  "globals": {
+    "navbar": {
+      "id": "global-navbar",
+      "type": "navbar",
+      "props": {
+        "sticky": true,
+        "transparent": true,
+        "ctaLabel": "Prenota ora",
+        "ctaAction": {
+          "type": "scroll-to",
+          "nodeId": "contact-section",
+          "behavior": "smooth"
+        }
+      },
+      "data": { "bindAttributes": { "logoText": "coach.fullName" } }
+    },
+    "footer": {
+      "id": "global-footer",
+      "type": "footer",
+      "props": {
+        "showLogo": true,
+        "showSocialLinks": true,
+        "copyrightText": "Â© {{year}} â€” Tutti i diritti riservati"
+      },
+      "style": { "backgroundColor": "surface", "padding": [48, 40] }
+    }
+  },
+
+  "pages": {
+    "home": {
+      "id": "home-root",
+      "type": "page-wrapper",
+      "props": { "includeNavbar": true, "includeFooter": true },
+      "style": { "backgroundColor": "background" },
+      "children": [
+        {
+          "id": "hero-section",
+          "type": "section",
+          "style": {
+            "padding": [120, 40, 100, 40],
+            "backgroundImage": "coach.heroBg",
+            "backgroundSize": "cover",
+            "backgroundPosition": "center",
+            "backgroundOverlay": "rgba(10,10,15,0.72)",
+            "minHeight": "100vh"
+          },
+          "layout": {
+            "direction": "column",
+            "alignItems": "center",
+            "gap": 32
+          },
+          "responsive": {
+            "sm": { "padding": [80, 24, 64, 24], "minHeight": "auto" }
+          },
+          "children": [
+            {
+              "id": "hero-avatar",
+              "type": "avatar",
+              "props": { "size": 128, "shape": "circle" },
+              "style": {
+                "shadow": "lg",
+                "borderRadius": 9999,
+                "border": { "width": 3, "color": "primary" }
+              },
+              "data": {
+                "bindAttributes": { "src": "coach.avatar" },
+                "fallback": "/assets/placeholder-avatar.jpg"
+              },
+              "style": {
+                "entranceAnimation": {
+                  "type": "scale-up",
+                  "duration": 500,
+                  "trigger": "page-load",
+                  "easing": "cubic-bezier(0.34,1.56,0.64,1)"
+                }
+              }
+            },
+            {
+              "id": "hero-name",
+              "type": "heading",
+              "props": { "level": 1 },
+              "style": {
+                "fontSize": "5xl",
+                "fontFamily": "heading",
+                "fontWeight": 700,
+                "color": "text",
+                "textAlign": "center",
+                "lineClamp": 2
+              },
+              "data": { "field": "coach.fullName", "transform": "capitalize" },
+              "responsive": {
+                "sm": { "fontSize": "3xl" },
+                "md": { "fontSize": "4xl" }
+              }
+            },
+            {
+              "id": "hero-tagline",
+              "type": "paragraph",
+              "style": {
+                "fontSize": "xl",
+                "color": "textSecondary",
+                "textAlign": "center",
+                "maxWidth": 580
+              },
+              "data": { "field": "coach.tagline" },
+              "responsive": {
+                "sm": { "fontSize": "lg" }
+              }
+            },
+
+            {
+              "id": "hero-stats-row",
+              "type": "row",
+              "layout": { "justifyContent": "center", "gap": 48, "wrap": true },
+              "data": { "listField": "coach.stats", "itemAlias": "stat" },
+              "children": [
+                {
+                  "id": "hero-stat-item",
+                  "type": "column",
+                  "layout": { "alignItems": "center", "gap": 4 },
+                  "children": [
+                    {
+                      "id": "hero-stat-value",
+                      "type": "heading",
+                      "props": { "level": 3 },
+                      "style": {
+                        "fontSize": "3xl",
+                        "fontWeight": 700,
+                        "color": "primary"
+                      },
+                      "data": {
+                        "field": "stat.value",
+                        "transform": ["string", "suffix:+"],
+                        "fallback": "â€”"
+                      }
+                    },
+                    {
+                      "id": "hero-stat-label",
+                      "type": "label",
+                      "style": {
+                        "fontSize": "sm",
+                        "color": "textMuted",
+                        "textTransform": "uppercase",
+                        "letterSpacing": 1
+                      },
+                      "data": { "field": "stat.label" }
+                    }
+                  ]
+                }
+              ]
+            },
+
+            {
+              "id": "hero-actions",
+              "type": "row",
+              "layout": { "gap": 16, "justifyContent": "center", "wrap": true },
+              "children": [
+                {
+                  "id": "hero-cta-primary",
+                  "type": "button",
+                  "props": {
+                    "label": "Scopri i servizi",
+                    "variant": "primary",
+                    "size": "lg",
+                    "iconRight": "arrow-right"
+                  },
+                  "interactions": [
+                    {
+                      "trigger": "click",
+                      "action": {
+                        "type": "scroll-to",
+                        "nodeId": "services-section",
+                        "behavior": "smooth"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "hero-cta-secondary",
+                  "type": "button",
+                  "props": {
+                    "label": "Contattami",
+                    "variant": "outline",
+                    "size": "lg"
+                  },
+                  "interactions": [
+                    {
+                      "trigger": "click",
+                      "action": {
+                        "type": "scroll-to",
+                        "nodeId": "contact-section",
+                        "behavior": "smooth"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+
+            {
+              "id": "hero-social-links",
+              "type": "social-links",
+              "data": { "listField": "coach.socialLinks", "itemAlias": "link" },
+              "props": { "variant": "icons", "size": "md", "gap": 16 },
+              "children": [
+                {
+                  "id": "hero-social-item",
+                  "type": "social-link-item",
+                  "props": { "showLabel": false, "size": "md" },
+                  "data": {
+                    "bindAttributes": {
+                      "network": "link.network",
+                      "url": "link.url"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": "services-section",
+          "type": "section",
+          "style": {
+            "padding": [80, 40],
+            "backgroundColor": "backgroundAlt"
+          },
+          "children": [
+            {
+              "id": "services-header",
+              "type": "column",
+              "layout": { "alignItems": "center", "gap": 8 },
+              "style": { "marginBottom": 48, "textAlign": "center" },
+              "children": [
+                {
+                  "id": "services-eyebrow",
+                  "type": "label",
+                  "props": { "text": "COSA OFFRO" },
+                  "style": {
+                    "fontSize": "sm",
+                    "color": "primary",
+                    "fontWeight": 600,
+                    "letterSpacing": 2,
+                    "textTransform": "uppercase"
+                  }
+                },
+                {
+                  "id": "services-title",
+                  "type": "heading",
+                  "props": { "level": 2 },
+                  "style": {
+                    "fontSize": "4xl",
+                    "fontFamily": "heading",
+                    "color": "text"
+                  },
+                  "responsive": { "sm": { "fontSize": "3xl" } }
+                }
+              ]
+            },
+
+            {
+              "id": "services-grid",
+              "type": "grid",
+              "layout": {
+                "columns": 3,
+                "gap": 24
+              },
+              "data": {
+                "listField": "coach.services",
+                "itemAlias": "service",
+                "sort": { "field": "service.price", "direction": "asc" },
+                "limit": 6
+              },
+              "responsive": {
+                "sm": { "columns": 1 },
+                "md": { "columns": 2 }
+              },
+              "children": [
+                {
+                  "id": "service-card-tpl",
+                  "type": "service-card",
+                  "props": {
+                    "variant": "default",
+                    "showPrice": true,
+                    "showCta": true,
+                    "ctaLabel": "Prenota"
+                  },
+                  "style": {
+                    "backgroundColor": "surface",
+                    "borderRadius": 16,
+                    "padding": 32,
+                    "border": { "width": 1, "color": "border" },
+                    "shadow": "md",
+                    "transition": "normal"
+                  },
+                  "children": [
+                    {
+                      "id": "svc-name",
+                      "type": "heading",
+                      "props": { "level": 3 },
+                      "style": {
+                        "fontSize": "xl",
+                        "fontWeight": 600,
+                        "color": "text",
+                        "marginBottom": 8
+                      },
+                      "data": { "field": "service.name" }
+                    },
+                    {
+                      "id": "svc-description",
+                      "type": "paragraph",
+                      "style": {
+                        "fontSize": "base",
+                        "color": "textSecondary",
+                        "lineClamp": 3,
+                        "marginBottom": 24
+                      },
+                      "data": { "field": "service.description", "fallback": "" }
+                    },
+                    {
+                      "id": "svc-price",
+                      "type": "text",
+                      "style": {
+                        "fontSize": "3xl",
+                        "fontWeight": 700,
+                        "color": "primary"
+                      },
+                      "data": {
+                        "field": "service.price",
+                        "transform": ["format:currency", "suffix: /ora"]
+                      }
+                    },
+                    {
+                      "id": "svc-badge-featured",
+                      "type": "badge",
+                      "props": { "label": "In evidenza", "variant": "primary" },
+                      "condition": {
+                        "field": "service.featured",
+                        "operator": "==",
+                        "value": true
+                      }
+                    },
+                    {
+                      "id": "svc-cta",
+                      "type": "button",
+                      "props": {
+                        "label": "Prenota sessione",
+                        "variant": "primary",
+                        "fullWidth": true
+                      },
+                      "condition": {
+                        "field": "coach.isPro",
+                        "operator": "==",
+                        "value": true
+                      },
+                      "interactions": [
+                        {
+                          "trigger": "click",
+                          "action": { "type": "open-booking" }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": "testimonials-section",
+          "type": "section",
+          "style": { "padding": [80, 40], "backgroundColor": "background" },
+          "style": {
+            "entranceAnimation": {
+              "type": "fade-in",
+              "duration": 600,
+              "trigger": "scroll-into-view",
+              "easing": "ease-out"
+            }
+          },
+          "children": [
+            {
+              "id": "testi-title",
+              "type": "heading",
+              "props": { "level": 2 },
+              "style": {
+                "fontSize": "4xl",
+                "fontFamily": "heading",
+                "color": "text",
+                "textAlign": "center",
+                "marginBottom": 48
+              },
+              "responsive": { "sm": { "fontSize": "3xl" } }
+            },
+            {
+              "id": "testi-grid",
+              "type": "grid",
+              "layout": { "columns": 3, "gap": 24 },
+              "data": {
+                "listField": "coach.testimonials",
+                "itemAlias": "testi",
+                "limit": 3
+              },
+              "responsive": {
+                "sm": { "columns": 1 },
+                "md": { "columns": 2 }
+              },
+              "children": [
+                {
+                  "id": "testi-card",
+                  "type": "testimonial",
+                  "props": {
+                    "variant": "card",
+                    "showAvatar": false,
+                    "showRating": true
+                  },
+                  "style": {
+                    "backgroundColor": "surface",
+                    "borderRadius": 16,
+                    "padding": 32,
+                    "border": { "width": 1, "color": "border" }
+                  },
+                  "children": [
+                    {
+                      "id": "testi-rating",
+                      "type": "rating",
+                      "props": { "maxStars": 5, "readonly": true },
+                      "data": { "bindAttributes": { "value": "testi.rating" } }
+                    },
+                    {
+                      "id": "testi-text",
+                      "type": "paragraph",
+                      "style": {
+                        "fontSize": "base",
+                        "color": "textSecondary",
+                        "lineHeight": 1.7,
+                        "marginBottom": 16
+                      },
+                      "data": {
+                        "field": "testi.text",
+                        "transform": ["prefix:\"", "suffix:\""]
+                      }
+                    },
+                    {
+                      "id": "testi-author",
+                      "type": "label",
+                      "style": {
+                        "fontSize": "sm",
+                        "fontWeight": 600,
+                        "color": "text"
+                      },
+                      "data": { "field": "testi.author" }
+                    },
+                    {
+                      "id": "testi-role",
+                      "type": "label",
+                      "style": { "fontSize": "xs", "color": "textMuted" },
+                      "data": { "field": "testi.role", "fallback": "" },
+                      "condition": {
+                        "field": "testi.role",
+                        "operator": "not-empty"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": "contact-section",
+          "type": "section",
+          "style": { "padding": [80, 40], "backgroundColor": "surface" },
+          "layout": {
+            "direction": "column",
+            "alignItems": "center",
+            "gap": 32
+          },
+          "children": [
+            {
+              "id": "contact-title",
+              "type": "heading",
+              "props": { "level": 2 },
+              "style": {
+                "fontSize": "4xl",
+                "fontFamily": "heading",
+                "color": "text",
+                "textAlign": "center"
+              },
+              "responsive": { "sm": { "fontSize": "3xl" } }
+            },
+            {
+              "id": "contact-subtitle",
+              "type": "paragraph",
+              "style": {
+                "fontSize": "lg",
+                "color": "textSecondary",
+                "textAlign": "center",
+                "maxWidth": 480
+              }
+            },
+            {
+              "id": "contact-form-node",
+              "type": "contact-form",
+              "props": {
+                "fields": [
+                  {
+                    "type": "text",
+                    "name": "name",
+                    "label": "Il tuo nome",
+                    "required": true
+                  },
+                  {
+                    "type": "email",
+                    "name": "email",
+                    "label": "Email",
+                    "required": true
+                  },
+                  {
+                    "type": "tel",
+                    "name": "phone",
+                    "label": "Telefono",
+                    "required": false
+                  },
+                  {
+                    "type": "textarea",
+                    "name": "message",
+                    "label": "Di cosa hai bisogno?",
+                    "required": true
+                  }
+                ],
+                "submitLabel": "Invia messaggio",
+                "endpoint": "/api/v1/contact",
+                "successMessage": "Messaggio inviato! Rispondo entro 24 ore.",
+                "errorMessage": "Errore nell'invio. Riprova o scrivimi direttamente."
+              },
+              "style": { "width": "100%", "maxWidth": 560 }
+            }
+          ]
+        }
+      ]
+    }
+  },
+
+  "assets": {
+    "fonts": [
+      {
+        "family": "Poppins",
+        "url": "https://fonts.gstatic.com/s/poppins/v21/pxiByp8kv8JHgFVrLEj6Z1JlFc-K.woff2",
+        "weight": [400, 500, 600, 700],
+        "display": "swap"
+      },
+      {
+        "family": "Inter",
+        "url": "https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2",
+        "weight": [400, 500, 600],
+        "display": "swap"
+      }
+    ],
+    "icons": {
+      "provider": "lucide",
+      "subset": ["arrow-right", "star", "check", "send"]
+    },
+    "images": {
+      "placeholder-avatar": "/assets/placeholder-avatar.jpg",
+      "og-default": "/assets/og-default.jpg"
+    }
+  },
+
+  "prototype": {
+    "version": "1.0",
+    "id": "coach-landing-proto",
+    "startPageId": "home",
+    "connections": [
+      {
+        "id": "conn-hero-to-services",
+        "source": { "nodeId": "hero-cta-primary", "trigger": "click" },
+        "destination": { "type": "section", "nodeId": "services-section" },
+        "transition": { "type": "dissolve", "duration": 300 }
+      },
+      {
+        "id": "conn-hero-to-contact",
+        "source": { "nodeId": "hero-cta-secondary", "trigger": "click" },
+        "destination": { "type": "section", "nodeId": "contact-section" },
+        "transition": { "type": "dissolve", "duration": 300 }
+      },
+      {
+        "id": "conn-navbar-cta",
+        "source": { "nodeId": "global-navbar", "trigger": "click" },
+        "destination": { "type": "section", "nodeId": "contact-section" },
+        "transition": { "type": "none" }
+      }
+    ],
+    "flows": [
+      {
+        "id": "flow-booking",
+        "name": "Flusso prenotazione",
+        "startNodeId": "hero-cta-primary",
+        "description": "Da hero â†’ servizi â†’ prenotazione sessione"
+      }
+    ]
+  },
+
+  "engineHints": {
+    "preferSSR": true,
+    "lazyLoadImages": true,
+    "enableAnimations": true,
+    "reduceMotion": false,
+    "locale": "it-IT"
+  }
+}
+

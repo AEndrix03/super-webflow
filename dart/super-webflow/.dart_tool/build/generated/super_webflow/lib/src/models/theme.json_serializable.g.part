@@ -1,0 +1,309 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$ThemeColorsImpl _$$ThemeColorsImplFromJson(Map<String, dynamic> json) =>
+    _$ThemeColorsImpl(
+      primary: json['primary'] as String,
+      primaryLight: json['primaryLight'] as String,
+      primaryDark: json['primaryDark'] as String,
+      secondary: json['secondary'] as String,
+      secondaryLight: json['secondaryLight'] as String,
+      secondaryDark: json['secondaryDark'] as String,
+      accent: json['accent'] as String,
+      accentLight: json['accentLight'] as String,
+      background: json['background'] as String,
+      backgroundAlt: json['backgroundAlt'] as String,
+      surface: json['surface'] as String,
+      surfaceAlt: json['surfaceAlt'] as String,
+      overlay: json['overlay'] as String,
+      text: json['text'] as String,
+      textSecondary: json['textSecondary'] as String,
+      textMuted: json['textMuted'] as String,
+      textInverse: json['textInverse'] as String,
+      textOnPrimary: json['textOnPrimary'] as String,
+      border: json['border'] as String,
+      borderStrong: json['borderStrong'] as String,
+      borderFocus: json['borderFocus'] as String,
+      success: json['success'] as String,
+      successLight: json['successLight'] as String,
+      warning: json['warning'] as String,
+      warningLight: json['warningLight'] as String,
+      danger: json['danger'] as String,
+      dangerLight: json['dangerLight'] as String,
+      info: json['info'] as String,
+      infoLight: json['infoLight'] as String,
+    );
+
+Map<String, dynamic> _$$ThemeColorsImplToJson(_$ThemeColorsImpl instance) =>
+    <String, dynamic>{
+      'primary': instance.primary,
+      'primaryLight': instance.primaryLight,
+      'primaryDark': instance.primaryDark,
+      'secondary': instance.secondary,
+      'secondaryLight': instance.secondaryLight,
+      'secondaryDark': instance.secondaryDark,
+      'accent': instance.accent,
+      'accentLight': instance.accentLight,
+      'background': instance.background,
+      'backgroundAlt': instance.backgroundAlt,
+      'surface': instance.surface,
+      'surfaceAlt': instance.surfaceAlt,
+      'overlay': instance.overlay,
+      'text': instance.text,
+      'textSecondary': instance.textSecondary,
+      'textMuted': instance.textMuted,
+      'textInverse': instance.textInverse,
+      'textOnPrimary': instance.textOnPrimary,
+      'border': instance.border,
+      'borderStrong': instance.borderStrong,
+      'borderFocus': instance.borderFocus,
+      'success': instance.success,
+      'successLight': instance.successLight,
+      'warning': instance.warning,
+      'warningLight': instance.warningLight,
+      'danger': instance.danger,
+      'dangerLight': instance.dangerLight,
+      'info': instance.info,
+      'infoLight': instance.infoLight,
+    };
+
+_$ThemeTypographyScaleImpl _$$ThemeTypographyScaleImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ThemeTypographyScaleImpl(
+      xs: (json['xs'] as num).toDouble(),
+      sm: (json['sm'] as num).toDouble(),
+      base: (json['base'] as num).toDouble(),
+      lg: (json['lg'] as num).toDouble(),
+      xl: (json['xl'] as num).toDouble(),
+      xl2: (json['2xl'] as num).toDouble(),
+      xl3: (json['3xl'] as num).toDouble(),
+      xl4: (json['4xl'] as num).toDouble(),
+      xl5: (json['5xl'] as num).toDouble(),
+      xl6: (json['6xl'] as num).toDouble(),
+      xl7: (json['7xl'] as num).toDouble(),
+    );
+
+Map<String, dynamic> _$$ThemeTypographyScaleImplToJson(
+        _$ThemeTypographyScaleImpl instance) =>
+    <String, dynamic>{
+      'xs': instance.xs,
+      'sm': instance.sm,
+      'base': instance.base,
+      'lg': instance.lg,
+      'xl': instance.xl,
+      '2xl': instance.xl2,
+      '3xl': instance.xl3,
+      '4xl': instance.xl4,
+      '5xl': instance.xl5,
+      '6xl': instance.xl6,
+      '7xl': instance.xl7,
+    };
+
+_$ThemeFontsImpl _$$ThemeFontsImplFromJson(Map<String, dynamic> json) =>
+    _$ThemeFontsImpl(
+      heading: json['heading'] as String,
+      body: json['body'] as String,
+      mono: json['mono'] as String?,
+    );
+
+Map<String, dynamic> _$$ThemeFontsImplToJson(_$ThemeFontsImpl instance) =>
+    <String, dynamic>{
+      'heading': instance.heading,
+      'body': instance.body,
+      'mono': instance.mono,
+    };
+
+_$ThemeTypographyImpl _$$ThemeTypographyImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ThemeTypographyImpl(
+      fonts: ThemeFonts.fromJson(json['fonts'] as Map<String, dynamic>),
+      availableWeights: (json['availableWeights'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList(),
+      scale:
+          ThemeTypographyScale.fromJson(json['scale'] as Map<String, dynamic>),
+      lineHeights: ThemeTypographyScale.fromJson(
+          json['lineHeights'] as Map<String, dynamic>),
+      letterSpacings: (json['letterSpacings'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, (e as num).toDouble()),
+      ),
+    );
+
+Map<String, dynamic> _$$ThemeTypographyImplToJson(
+        _$ThemeTypographyImpl instance) =>
+    <String, dynamic>{
+      'fonts': instance.fonts,
+      'availableWeights': instance.availableWeights,
+      'scale': instance.scale,
+      'lineHeights': instance.lineHeights,
+      'letterSpacings': instance.letterSpacings,
+    };
+
+_$ThemeSpacingImpl _$$ThemeSpacingImplFromJson(Map<String, dynamic> json) =>
+    _$ThemeSpacingImpl(
+      base: (json['base'] as num).toDouble(),
+      scale: (json['scale'] as Map<String, dynamic>).map(
+        (k, e) => MapEntry(k, (e as num).toDouble()),
+      ),
+    );
+
+Map<String, dynamic> _$$ThemeSpacingImplToJson(_$ThemeSpacingImpl instance) =>
+    <String, dynamic>{
+      'base': instance.base,
+      'scale': instance.scale,
+    };
+
+_$ThemeRadiiImpl _$$ThemeRadiiImplFromJson(Map<String, dynamic> json) =>
+    _$ThemeRadiiImpl(
+      none: (json['none'] as num?)?.toDouble() ?? 0.0,
+      xs: (json['xs'] as num).toDouble(),
+      sm: (json['sm'] as num).toDouble(),
+      md: (json['md'] as num).toDouble(),
+      lg: (json['lg'] as num).toDouble(),
+      xl: (json['xl'] as num).toDouble(),
+      xl2: (json['2xl'] as num).toDouble(),
+      xl3: (json['3xl'] as num).toDouble(),
+      full: (json['full'] as num?)?.toDouble() ?? 9999.0,
+    );
+
+Map<String, dynamic> _$$ThemeRadiiImplToJson(_$ThemeRadiiImpl instance) =>
+    <String, dynamic>{
+      'none': instance.none,
+      'xs': instance.xs,
+      'sm': instance.sm,
+      'md': instance.md,
+      'lg': instance.lg,
+      'xl': instance.xl,
+      '2xl': instance.xl2,
+      '3xl': instance.xl3,
+      'full': instance.full,
+    };
+
+_$ShadowDefImpl _$$ShadowDefImplFromJson(Map<String, dynamic> json) =>
+    _$ShadowDefImpl(
+      offsetX: (json['offsetX'] as num).toDouble(),
+      offsetY: (json['offsetY'] as num).toDouble(),
+      blur: (json['blur'] as num).toDouble(),
+      spread: (json['spread'] as num?)?.toDouble(),
+      color: json['color'] as String,
+      inset: json['inset'] as bool? ?? false,
+    );
+
+Map<String, dynamic> _$$ShadowDefImplToJson(_$ShadowDefImpl instance) =>
+    <String, dynamic>{
+      'offsetX': instance.offsetX,
+      'offsetY': instance.offsetY,
+      'blur': instance.blur,
+      'spread': instance.spread,
+      'color': instance.color,
+      'inset': instance.inset,
+    };
+
+_$ThemeShadowsImpl _$$ThemeShadowsImplFromJson(Map<String, dynamic> json) =>
+    _$ThemeShadowsImpl(
+      sm: const ThemeShadowValueConverter().fromJson(json['sm']),
+      md: const ThemeShadowValueConverter().fromJson(json['md']),
+      lg: const ThemeShadowValueConverter().fromJson(json['lg']),
+      xl: const ThemeShadowValueConverter().fromJson(json['xl']),
+      inner: ShadowDef.fromJson(json['inner'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$ThemeShadowsImplToJson(_$ThemeShadowsImpl instance) =>
+    <String, dynamic>{
+      'sm': const ThemeShadowValueConverter().toJson(instance.sm),
+      'md': const ThemeShadowValueConverter().toJson(instance.md),
+      'lg': const ThemeShadowValueConverter().toJson(instance.lg),
+      'xl': const ThemeShadowValueConverter().toJson(instance.xl),
+      'inner': instance.inner,
+    };
+
+_$ThemeEasingImpl _$$ThemeEasingImplFromJson(Map<String, dynamic> json) =>
+    _$ThemeEasingImpl(
+      defaultValue: json['default'] as String,
+      inValue: json['in'] as String,
+      out: json['out'] as String,
+      inOut: json['inOut'] as String,
+      spring: json['spring'] as String,
+    );
+
+Map<String, dynamic> _$$ThemeEasingImplToJson(_$ThemeEasingImpl instance) =>
+    <String, dynamic>{
+      'default': instance.defaultValue,
+      'in': instance.inValue,
+      'out': instance.out,
+      'inOut': instance.inOut,
+      'spring': instance.spring,
+    };
+
+_$ThemeTransitionsImpl _$$ThemeTransitionsImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ThemeTransitionsImpl(
+      fast: (json['fast'] as num).toInt(),
+      normal: (json['normal'] as num).toInt(),
+      slow: (json['slow'] as num).toInt(),
+      easing: ThemeEasing.fromJson(json['easing'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$ThemeTransitionsImplToJson(
+        _$ThemeTransitionsImpl instance) =>
+    <String, dynamic>{
+      'fast': instance.fast,
+      'normal': instance.normal,
+      'slow': instance.slow,
+      'easing': instance.easing,
+    };
+
+_$ThemeZIndexImpl _$$ThemeZIndexImplFromJson(Map<String, dynamic> json) =>
+    _$ThemeZIndexImpl(
+      base: (json['base'] as num).toInt(),
+      raised: (json['raised'] as num).toInt(),
+      sticky: (json['sticky'] as num).toInt(),
+      overlay: (json['overlay'] as num).toInt(),
+      modal: (json['modal'] as num).toInt(),
+      popup: (json['popup'] as num).toInt(),
+      tooltip: (json['tooltip'] as num).toInt(),
+      max: (json['max'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$$ThemeZIndexImplToJson(_$ThemeZIndexImpl instance) =>
+    <String, dynamic>{
+      'base': instance.base,
+      'raised': instance.raised,
+      'sticky': instance.sticky,
+      'overlay': instance.overlay,
+      'modal': instance.modal,
+      'popup': instance.popup,
+      'tooltip': instance.tooltip,
+      'max': instance.max,
+    };
+
+_$ThemeSchemaImpl _$$ThemeSchemaImplFromJson(Map<String, dynamic> json) =>
+    _$ThemeSchemaImpl(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      version: json['version'] as String,
+      colors: ThemeColors.fromJson(json['colors'] as Map<String, dynamic>),
+      typography:
+          ThemeTypography.fromJson(json['typography'] as Map<String, dynamic>),
+      spacing: ThemeSpacing.fromJson(json['spacing'] as Map<String, dynamic>),
+      radii: ThemeRadii.fromJson(json['radii'] as Map<String, dynamic>),
+      shadows: ThemeShadows.fromJson(json['shadows'] as Map<String, dynamic>),
+      transitions: ThemeTransitions.fromJson(
+          json['transitions'] as Map<String, dynamic>),
+      zIndex: ThemeZIndex.fromJson(json['zIndex'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$ThemeSchemaImplToJson(_$ThemeSchemaImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'version': instance.version,
+      'colors': instance.colors,
+      'typography': instance.typography,
+      'spacing': instance.spacing,
+      'radii': instance.radii,
+      'shadows': instance.shadows,
+      'transitions': instance.transitions,
+      'zIndex': instance.zIndex,
+    };

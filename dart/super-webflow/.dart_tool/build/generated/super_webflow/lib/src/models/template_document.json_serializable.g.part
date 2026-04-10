@@ -1,0 +1,329 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$PrototypeTransitionImpl _$$PrototypeTransitionImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PrototypeTransitionImpl(
+      type: json['type'] as String,
+      duration: (json['duration'] as num?)?.toInt(),
+      easing: json['easing'] as String?,
+    );
+
+Map<String, dynamic> _$$PrototypeTransitionImplToJson(
+        _$PrototypeTransitionImpl instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'duration': instance.duration,
+      'easing': instance.easing,
+    };
+
+_$PrototypeSourceImpl _$$PrototypeSourceImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PrototypeSourceImpl(
+      nodeId: json['nodeId'] as String,
+      trigger: json['trigger'] as String,
+    );
+
+Map<String, dynamic> _$$PrototypeSourceImplToJson(
+        _$PrototypeSourceImpl instance) =>
+    <String, dynamic>{
+      'nodeId': instance.nodeId,
+      'trigger': instance.trigger,
+    };
+
+_$PrototypeConnectionImpl _$$PrototypeConnectionImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PrototypeConnectionImpl(
+      id: json['id'] as String,
+      source: PrototypeSource.fromJson(json['source'] as Map<String, dynamic>),
+      destination: const PrototypeDestinationConverter()
+          .fromJson(json['destination'] as Map<String, dynamic>),
+      transition: json['transition'] == null
+          ? null
+          : PrototypeTransition.fromJson(
+              json['transition'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$PrototypeConnectionImplToJson(
+        _$PrototypeConnectionImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'source': instance.source,
+      'destination':
+          const PrototypeDestinationConverter().toJson(instance.destination),
+      'transition': instance.transition,
+    };
+
+_$PrototypeOverlayImpl _$$PrototypeOverlayImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PrototypeOverlayImpl(
+      id: json['id'] as String,
+      nodeId: json['nodeId'] as String,
+      position: json['position'] as String,
+      backdrop: json['backdrop'] as bool?,
+      backdropColor: json['backdropColor'] as String?,
+      closeOnBackdropClick: json['closeOnBackdropClick'] as bool?,
+      closeOnEsc: json['closeOnEsc'] as bool?,
+      animation: json['animation'] == null
+          ? null
+          : AnimationDef.fromJson(json['animation'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$PrototypeOverlayImplToJson(
+        _$PrototypeOverlayImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'nodeId': instance.nodeId,
+      'position': instance.position,
+      'backdrop': instance.backdrop,
+      'backdropColor': instance.backdropColor,
+      'closeOnBackdropClick': instance.closeOnBackdropClick,
+      'closeOnEsc': instance.closeOnEsc,
+      'animation': instance.animation,
+    };
+
+_$PrototypeFlowImpl _$$PrototypeFlowImplFromJson(Map<String, dynamic> json) =>
+    _$PrototypeFlowImpl(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      startNodeId: json['startNodeId'] as String,
+      description: json['description'] as String?,
+    );
+
+Map<String, dynamic> _$$PrototypeFlowImplToJson(_$PrototypeFlowImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'startNodeId': instance.startNodeId,
+      'description': instance.description,
+    };
+
+_$PrototypeSchemaImpl _$$PrototypeSchemaImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PrototypeSchemaImpl(
+      version: json['version'] as String,
+      id: json['id'] as String,
+      name: json['name'] as String?,
+      startPageId: json['startPageId'] as String,
+      connections: (json['connections'] as List<dynamic>)
+          .map((e) => PrototypeConnection.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      overlays: (json['overlays'] as List<dynamic>?)
+          ?.map((e) => PrototypeOverlay.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      flows: (json['flows'] as List<dynamic>?)
+          ?.map((e) => PrototypeFlow.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$PrototypeSchemaImplToJson(
+        _$PrototypeSchemaImpl instance) =>
+    <String, dynamic>{
+      'version': instance.version,
+      'id': instance.id,
+      'name': instance.name,
+      'startPageId': instance.startPageId,
+      'connections': instance.connections,
+      'overlays': instance.overlays,
+      'flows': instance.flows,
+    };
+
+_$FontAssetImpl _$$FontAssetImplFromJson(Map<String, dynamic> json) =>
+    _$FontAssetImpl(
+      family: json['family'] as String,
+      url: json['url'] as String,
+      weight: json['weight'],
+      style: json['style'] as String?,
+      display: json['display'] as String?,
+    );
+
+Map<String, dynamic> _$$FontAssetImplToJson(_$FontAssetImpl instance) =>
+    <String, dynamic>{
+      'family': instance.family,
+      'url': instance.url,
+      'weight': instance.weight,
+      'style': instance.style,
+      'display': instance.display,
+    };
+
+_$IconSetDefImpl _$$IconSetDefImplFromJson(Map<String, dynamic> json) =>
+    _$IconSetDefImpl(
+      provider: json['provider'] as String,
+      subset:
+          (json['subset'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      customUrl: json['customUrl'] as String?,
+    );
+
+Map<String, dynamic> _$$IconSetDefImplToJson(_$IconSetDefImpl instance) =>
+    <String, dynamic>{
+      'provider': instance.provider,
+      'subset': instance.subset,
+      'customUrl': instance.customUrl,
+    };
+
+_$ScriptDefImpl _$$ScriptDefImplFromJson(Map<String, dynamic> json) =>
+    _$ScriptDefImpl(
+      src: json['src'] as String,
+      async: json['async'] as bool?,
+      defer: json['defer'] as bool?,
+      position: json['position'] as String,
+      condition: json['condition'] as String?,
+    );
+
+Map<String, dynamic> _$$ScriptDefImplToJson(_$ScriptDefImpl instance) =>
+    <String, dynamic>{
+      'src': instance.src,
+      'async': instance.async,
+      'defer': instance.defer,
+      'position': instance.position,
+      'condition': instance.condition,
+    };
+
+_$AssetsSchemaImpl _$$AssetsSchemaImplFromJson(Map<String, dynamic> json) =>
+    _$AssetsSchemaImpl(
+      fonts: (json['fonts'] as List<dynamic>?)
+          ?.map((e) => FontAsset.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      icons: json['icons'] == null
+          ? null
+          : IconSetDef.fromJson(json['icons'] as Map<String, dynamic>),
+      images: (json['images'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
+      scripts: (json['scripts'] as List<dynamic>?)
+          ?.map((e) => ScriptDef.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$AssetsSchemaImplToJson(_$AssetsSchemaImpl instance) =>
+    <String, dynamic>{
+      'fonts': instance.fonts,
+      'icons': instance.icons,
+      'images': instance.images,
+      'scripts': instance.scripts,
+    };
+
+_$TemplateMetaImpl _$$TemplateMetaImplFromJson(Map<String, dynamic> json) =>
+    _$TemplateMetaImpl(
+      title: json['title'] as String,
+      description: json['description'] as String?,
+      keywords: (json['keywords'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      favicon: json['favicon'] as String?,
+      ogImage: json['ogImage'] as String?,
+      canonicalUrl: json['canonicalUrl'] as String?,
+      noIndex: json['noIndex'] as bool?,
+      structuredData: json['structuredData'] as Map<String, dynamic>?,
+    );
+
+Map<String, dynamic> _$$TemplateMetaImplToJson(_$TemplateMetaImpl instance) =>
+    <String, dynamic>{
+      'title': instance.title,
+      'description': instance.description,
+      'keywords': instance.keywords,
+      'favicon': instance.favicon,
+      'ogImage': instance.ogImage,
+      'canonicalUrl': instance.canonicalUrl,
+      'noIndex': instance.noIndex,
+      'structuredData': instance.structuredData,
+    };
+
+_$TemplateGlobalsImpl _$$TemplateGlobalsImplFromJson(
+        Map<String, dynamic> json) =>
+    _$TemplateGlobalsImpl(
+      navbar: ComponentNode.fromJson(json['navbar'] as Map<String, dynamic>),
+      footer: ComponentNode.fromJson(json['footer'] as Map<String, dynamic>),
+      styles:
+          (json['styles'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    );
+
+Map<String, dynamic> _$$TemplateGlobalsImplToJson(
+        _$TemplateGlobalsImpl instance) =>
+    <String, dynamic>{
+      'navbar': instance.navbar,
+      'footer': instance.footer,
+      'styles': instance.styles,
+    };
+
+_$EngineHintsImpl _$$EngineHintsImplFromJson(Map<String, dynamic> json) =>
+    _$EngineHintsImpl(
+      preferSSR: json['preferSSR'] as bool?,
+      lazyLoadImages: json['lazyLoadImages'] as bool?,
+      enableAnimations: json['enableAnimations'] as bool?,
+      reduceMotion: json['reduceMotion'] as bool?,
+      rtl: json['rtl'] as bool?,
+      locale: json['locale'] as String?,
+      baseFontSize: (json['baseFontSize'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$$EngineHintsImplToJson(_$EngineHintsImpl instance) =>
+    <String, dynamic>{
+      'preferSSR': instance.preferSSR,
+      'lazyLoadImages': instance.lazyLoadImages,
+      'enableAnimations': instance.enableAnimations,
+      'reduceMotion': instance.reduceMotion,
+      'rtl': instance.rtl,
+      'locale': instance.locale,
+      'baseFontSize': instance.baseFontSize,
+    };
+
+_$TemplateDocumentImpl _$$TemplateDocumentImplFromJson(
+        Map<String, dynamic> json) =>
+    _$TemplateDocumentImpl(
+      schema: json[r'$schema'] as String,
+      version: json['version'] as String,
+      id: json['id'] as String,
+      name: json['name'] as String,
+      category: json['category'] as String?,
+      tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      author: json['author'] as String?,
+      thumbnail: json['thumbnail'] as String?,
+      createdAt: json['createdAt'] as String?,
+      updatedAt: json['updatedAt'] as String?,
+      theme: ThemeSchema.fromJson(json['theme'] as Map<String, dynamic>),
+      meta: TemplateMeta.fromJson(json['meta'] as Map<String, dynamic>),
+      dataSchema: (json['dataSchema'] as Map<String, dynamic>).map(
+        (k, e) => MapEntry(k, DataFieldDef.fromJson(e as Map<String, dynamic>)),
+      ),
+      globals: json['globals'] == null
+          ? null
+          : TemplateGlobals.fromJson(json['globals'] as Map<String, dynamic>),
+      pages: (json['pages'] as Map<String, dynamic>).map(
+        (k, e) =>
+            MapEntry(k, ComponentNode.fromJson(e as Map<String, dynamic>)),
+      ),
+      assets: json['assets'] == null
+          ? null
+          : AssetsSchema.fromJson(json['assets'] as Map<String, dynamic>),
+      prototype: json['prototype'] == null
+          ? null
+          : PrototypeSchema.fromJson(json['prototype'] as Map<String, dynamic>),
+      engineHints: json['engineHints'] == null
+          ? null
+          : EngineHints.fromJson(json['engineHints'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$TemplateDocumentImplToJson(
+        _$TemplateDocumentImpl instance) =>
+    <String, dynamic>{
+      r'$schema': instance.schema,
+      'version': instance.version,
+      'id': instance.id,
+      'name': instance.name,
+      'category': instance.category,
+      'tags': instance.tags,
+      'author': instance.author,
+      'thumbnail': instance.thumbnail,
+      'createdAt': instance.createdAt,
+      'updatedAt': instance.updatedAt,
+      'theme': instance.theme,
+      'meta': instance.meta,
+      'dataSchema': instance.dataSchema,
+      'globals': instance.globals,
+      'pages': instance.pages,
+      'assets': instance.assets,
+      'prototype': instance.prototype,
+      'engineHints': instance.engineHints,
+    };

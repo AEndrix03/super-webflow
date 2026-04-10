@@ -1,0 +1,29 @@
+﻿name: super_webflow
+description: >
+  UI Contract Language validator and Flutter engine processor.
+  Parses, validates, and renders ui-contract v1.0 template documents
+  as complete Flutter widget trees.
+version: 1.0.0
+homepage: https://github.com/coachly/super-webflow
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+  flutter: '>=3.19.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  freezed_annotation: ^2.4.4
+  json_annotation: ^4.9.0
+  intl: ^0.19.0
+  visibility_detector: ^0.4.0+2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  build_runner: ^2.4.13
+  freezed: ^2.5.7
+  json_serializable: ^6.8.0
+  mocktail: ^1.0.4
+
