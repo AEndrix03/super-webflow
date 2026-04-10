@@ -1,5 +1,5 @@
-{
-  "$schema": "https://ui-schema.Super-WebFlow.io/v1.0/template.schema.json",
+﻿{
+  "$schema": "https://aredegalli.it/super-webflow/v1.0/template.schema.json",
   "version": "1.0",
   "id": "minimal-example",
   "name": "Minimal Template",
@@ -119,7 +119,7 @@
   },
 
   "meta": {
-    "title": "{{coach.fullName}} — Personal Trainer",
+    "title": "{{coach.fullName}} â€” Personal Trainer",
     "description": "Scopri i programmi di allenamento personalizzati."
   },
 
@@ -250,3 +250,4 @@
     }
   }
 }
+

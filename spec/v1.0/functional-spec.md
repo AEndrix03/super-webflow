@@ -1,8 +1,8 @@
-# Super-WebFlow UI Contract Language — Functional Specification
+﻿# Super-WebFlow UI Contract Language â€” Functional Specification
 
 **Version:** 1.0  
 **Status:** Stable  
-**Schema:** `https://ui-schema.Super-WebFlow.io/v1.0/template.schema.json`  
+**Schema:** `https://aredegalli.it/super-webflow/v1.0/template.schema.json`  
 **Changelog:** See `CHANGELOG.md`
 
 ---
@@ -36,17 +36,17 @@ An engine is considered **compliant** only when it passes the reference test sui
 Before rendering, an engine MUST execute the following pipeline in order:
 
 ```
-1. Parse       → JSON parse the document string
-2. Validate    → Validate against template.schema.json (structural)
-3. Lint        → Apply semantic validation rules (§8)
-4. Hydrate     → Inject DataContext into the document
-5. Render      → Execute the rendering pipeline (§4)
+1. Parse       â†’ JSON parse the document string
+2. Validate    â†’ Validate against template.schema.json (structural)
+3. Lint        â†’ Apply semantic validation rules (Â§8)
+4. Hydrate     â†’ Inject DataContext into the document
+5. Render      â†’ Execute the rendering pipeline (Â§4)
 ```
 
-**Parse failure** → surface to caller as a fatal error with the parse error message.  
-**Validation failure** → surface all JSON Schema errors; abort rendering.  
-**Lint failure** → surface all rule violations as structured errors (§8.2); abort rendering by default; WARN-only mode available for development.  
-**Hydrate/Render failure** → per-node error handling per §9.
+**Parse failure** â†’ surface to caller as a fatal error with the parse error message.  
+**Validation failure** â†’ surface all JSON Schema errors; abort rendering.  
+**Lint failure** â†’ surface all rule violations as structured errors (Â§8.2); abort rendering by default; WARN-only mode available for development.  
+**Hydrate/Render failure** â†’ per-node error handling per Â§9.
 
 ---
 
@@ -62,11 +62,11 @@ When a `Color` value is encountered, the engine resolves it in this order:
 Resolution is case-sensitive. `"Primary"` is NOT the same as `"primary"`.
 
 ```
-"primary"             → theme.colors.primary  (e.g. "#6C5CE7")
-"#6C5CE7"             → "#6C5CE7"  (raw)
-"rgba(108,92,231,0.8)"→ "rgba(108,92,231,0.8)"  (raw)
-"surface"             → theme.colors.surface
-"SURFACE"             → treated as raw; no match; WARN in dev mode
+"primary"             â†’ theme.colors.primary  (e.g. "#6C5CE7")
+"#6C5CE7"             â†’ "#6C5CE7"  (raw)
+"rgba(108,92,231,0.8)"â†’ "rgba(108,92,231,0.8)"  (raw)
+"surface"             â†’ theme.colors.surface
+"SURFACE"             â†’ treated as raw; no match; WARN in dev mode
 ```
 
 ### 3.2 SizeValue Resolution
@@ -86,48 +86,48 @@ Resolution is case-sensitive. `"Primary"` is NOT the same as `"primary"`.
 
 Shorthand follows CSS conventions:
 
-- `16` → all sides `16`
-- `[16, 24]` → top/bottom `16`, right/left `24`
-- `[8, 16, 24, 32]` → top `8`, right `16`, bottom `24`, left `32`
-- Object form → each key sets its side; unset sides default to `0`
+- `16` â†’ all sides `16`
+- `[16, 24]` â†’ top/bottom `16`, right/left `24`
+- `[8, 16, 24, 32]` â†’ top `8`, right `16`, bottom `24`, left `32`
+- Object form â†’ each key sets its side; unset sides default to `0`
 
-**Precedence:** individual props (`paddingTop`, `marginLeft`, …) override shorthand (`padding`, `margin`) when both appear on the same node.  
+**Precedence:** individual props (`paddingTop`, `marginLeft`, â€¦) override shorthand (`padding`, `margin`) when both appear on the same node.  
 `paddingX` sets left and right; `paddingY` sets top and bottom. If both `paddingX` and `paddingLeft` are set on the same node, `paddingLeft` wins.
 
 ### 3.4 FontSize Resolution
 
-- `number` → used as-is in px / logical pixels
-- `FontSizeKey` → `theme.typography.scale[key]`
+- `number` â†’ used as-is in px / logical pixels
+- `FontSizeKey` â†’ `theme.typography.scale[key]`
 
 If the key is absent from the theme scale, fall back to `theme.typography.scale.base` and warn.
 
 ### 3.5 Shadow Resolution
 
-- String key `"sm" | "md" | "lg" | "xl" | "inner"` → `theme.shadows[key]`
-- `"none"` → no shadow (removes any inherited shadow)
-- Inline `ShadowDef` → used directly
-- `ShadowDef[]` → multiple shadows @webOnly; Flutter engines use the first element
+- String key `"sm" | "md" | "lg" | "xl" | "inner"` â†’ `theme.shadows[key]`
+- `"none"` â†’ no shadow (removes any inherited shadow)
+- Inline `ShadowDef` â†’ used directly
+- `ShadowDef[]` â†’ multiple shadows @webOnly; Flutter engines use the first element
 
 `theme.shadows.none` MUST be `null`. Engines MUST treat `null` as "no shadow applied".
 
 ### 3.6 FontFamily Resolution
 
-- `"heading"` → `theme.typography.fonts.heading`
-- `"body"` → `theme.typography.fonts.body`
-- `"mono"` → `theme.typography.fonts.mono`; if undefined in theme, fall back to system monospace
-- Any other string → used as-is
+- `"heading"` â†’ `theme.typography.fonts.heading`
+- `"body"` â†’ `theme.typography.fonts.body`
+- `"mono"` â†’ `theme.typography.fonts.mono`; if undefined in theme, fall back to system monospace
+- Any other string â†’ used as-is
 
 ### 3.7 ZIndex Resolution
 
-- Integer → used directly
-- String key → `theme.zIndex[key]`
+- Integer â†’ used directly
+- String key â†’ `theme.zIndex[key]`
 
 ### 3.8 Transition Resolution
 
-- `"fast"` → `{ property:"all", duration:theme.transitions.fast, easing:theme.transitions.easing.default }`
-- `"normal"` → `{ property:"all", duration:theme.transitions.normal, easing:theme.transitions.easing.default }`
-- `"slow"` → `{ property:"all", duration:theme.transitions.slow, easing:theme.transitions.easing.default }`
-- `TransitionDef` or `TransitionDef[]` → used directly
+- `"fast"` â†’ `{ property:"all", duration:theme.transitions.fast, easing:theme.transitions.easing.default }`
+- `"normal"` â†’ `{ property:"all", duration:theme.transitions.normal, easing:theme.transitions.easing.default }`
+- `"slow"` â†’ `{ property:"all", duration:theme.transitions.slow, easing:theme.transitions.easing.default }`
+- `TransitionDef` or `TransitionDef[]` â†’ used directly
 
 Transitions are @webOnly. Flutter engines MUST silently ignore the `transition` property.
 
@@ -138,13 +138,13 @@ Transitions are @webOnly. Flutter engines MUST silently ignore the `transition` 
 For every `ComponentNode`, an engine MUST execute the following steps in order. Deviating from this order is a spec violation.
 
 ```
-Step 1 — Condition check
+Step 1 â€” Condition check
   If node.condition is present:
-    Evaluate condition against DataContext (§5.3)
-    If FALSE → render nothing; children are NOT evaluated. STOP.
+    Evaluate condition against DataContext (Â§5.3)
+    If FALSE â†’ render nothing; children are NOT evaluated. STOP.
               (web: display:none  |  Flutter: Visibility(visible:false))
 
-Step 2 — List expansion
+Step 2 â€” List expansion
   If node.data.listField is present:
     Resolve array at listField from DataContext
     Apply data.sort if present (stable sort)
@@ -155,54 +155,54 @@ Step 2 — List expansion
         + [data.itemAlias  ?? "item"]  = item
         + [data.indexAlias ?? "index"] = i
       Render each child of node in the cloned context
-    STOP — do not proceed to step 3 for the list container itself.
+    STOP â€” do not proceed to step 3 for the list container itself.
 
-Step 3 — Field binding
+Step 3 â€” Field binding
   If node.data.field is present:
-    Resolve value from DataContext (§5.1)
-    Apply transform pipeline (§5.2)
+    Resolve value from DataContext (Â§5.1)
+    Apply transform pipeline (Â§5.2)
     Inject into node content:
       text-type nodes (heading/paragraph/text/label): set text content
       other nodes: engine-defined per component (see Appendix A)
   If node.data.bindAttributes is present:
     For each [propName, fieldPath]:
       Resolve fieldPath from DataContext
-      Set as node.props[propName] — overrides any static value
+      Set as node.props[propName] â€” overrides any static value
 
-Step 4 — Responsive merge
+Step 4 â€” Responsive merge
   Determine active breakpoint:
-    viewport < 640px  → base only
-    viewport ≥ 640px  → merge sm
-    viewport ≥ 768px  → merge md
-    viewport ≥ 1024px → merge lg
-    viewport ≥ 1280px → merge xl
-  Merging is ADDITIVE (deep property-level merge). See §7.
+    viewport < 640px  â†’ base only
+    viewport â‰¥ 640px  â†’ merge sm
+    viewport â‰¥ 768px  â†’ merge md
+    viewport â‰¥ 1024px â†’ merge lg
+    viewport â‰¥ 1280px â†’ merge xl
+  Merging is ADDITIVE (deep property-level merge). See Â§7.
 
-Step 5 — Style resolution
-  Resolve all StyleProps token values using §3.
+Step 5 â€” Style resolution
+  Resolve all StyleProps token values using Â§3.
   Produce a platform-native style representation.
 
-Step 6 — Layout resolution
+Step 6 â€” Layout resolution
   Determine mode:
-    columns present  → Grid mode
-    direction present → Flex mode
-    else              → Block/Column (default)
+    columns present  â†’ Grid mode
+    direction present â†’ Flex mode
+    else              â†’ Block/Column (default)
 
-Step 7 — Render
+Step 7 â€” Render
   Dispatch to ComponentRegistry with resolved node.
   ComponentRegistry returns a platform-native widget/element.
 
-Step 8 — Children
+Step 8 â€” Children
   If node.children is present and non-empty (and step 2 did not apply):
     Render each child in order, passing current DataContext.
 
-Step 9 — Interactions
-  Attach event listeners per §6.
+Step 9 â€” Interactions
+  Attach event listeners per Â§6.
 
-Step 10 — Entrance animation
+Step 10 â€” Entrance animation
   If node.style.entranceAnimation is present:
-    'page-load'        → fire immediately after first render
-    'scroll-into-view' → fire when node enters viewport
+    'page-load'        â†’ fire immediately after first render
+    'scroll-into-view' â†’ fire when node enters viewport
                          (IntersectionObserver on web | VisibilityDetector on Flutter)
 ```
 
@@ -215,42 +215,42 @@ Step 10 — Entrance animation
 Paths use dot-notation with bracket notation for arrays:
 
 ```
-"coach.name"               → context["coach"]["name"]
-"coach.services[0].price"  → context["coach"]["services"][0]["price"]
-"service.name"             → context["service"]["name"]   (item alias)
-"index"                    → context["index"]             (index alias)
+"coach.name"               â†’ context["coach"]["name"]
+"coach.services[0].price"  â†’ context["coach"]["services"][0]["price"]
+"service.name"             â†’ context["service"]["name"]   (item alias)
+"index"                    â†’ context["index"]             (index alias)
 ```
 
 Rules:
 
-- Non-existent intermediate key → treat as `undefined`; apply fallback; never throw.
-- `null` or `undefined` resolved value → apply `data.fallback` if present; else empty string for text nodes, `null` for bindings.
+- Non-existent intermediate key â†’ treat as `undefined`; apply fallback; never throw.
+- `null` or `undefined` resolved value â†’ apply `data.fallback` if present; else empty string for text nodes, `null` for bindings.
 
 ### 5.2 Transform Pipeline
 
-Applied left-to-right. Each transform receives the output of the previous. On type mismatch: return input unchanged, warn (§9.1 R10).
+Applied left-to-right. Each transform receives the output of the previous. On type mismatch: return input unchanged, warn (Â§9.1 R10).
 
 **String transforms:**
 
-| Transform     | Input → Output                     |
+| Transform     | Input â†’ Output                     |
 | ------------- | ---------------------------------- |
-| `uppercase`   | `"hello"` → `"HELLO"`              |
-| `lowercase`   | `"HELLO"` → `"hello"`              |
-| `capitalize`  | `"hello world"` → `"Hello World"`  |
-| `trim`        | `"  hi  "` → `"hi"`                |
-| `truncate:N`  | First N chars + `"…"` if longer    |
-| `prefix:X`    | `"100"` → `"X100"`                 |
-| `suffix:X`    | `"100"` → `"100X"`                 |
+| `uppercase`   | `"hello"` â†’ `"HELLO"`              |
+| `lowercase`   | `"HELLO"` â†’ `"hello"`              |
+| `capitalize`  | `"hello world"` â†’ `"Hello World"`  |
+| `trim`        | `"  hi  "` â†’ `"hi"`                |
+| `truncate:N`  | First N chars + `"â€¦"` if longer    |
+| `prefix:X`    | `"100"` â†’ `"X100"`                 |
+| `suffix:X`    | `"100"` â†’ `"100X"`                 |
 | `replace:A:B` | All occurrences of A replaced by B |
 | `default:V`   | Uses V if value is falsy           |
 
 **Numeric transforms** (locale from `engineHints.locale`, default `"it-IT"`):
 
-| Transform                 | `1500` →         |
+| Transform                 | `1500` â†’         |
 | ------------------------- | ---------------- |
-| `format:currency`         | `"€1.500,00"`    |
-| `format:currency-compact` | `"€1,5k"`        |
-| `format:percent`          | `0.85` → `"85%"` |
+| `format:currency`         | `"â‚¬1.500,00"`    |
+| `format:currency-compact` | `"â‚¬1,5k"`        |
+| `format:percent`          | `0.85` â†’ `"85%"` |
 | `format:number`           | `"1.500"`        |
 
 **Date transforms** (expects ISO 8601 string):
@@ -261,11 +261,11 @@ Applied left-to-right. Each transform receives the output of the previous. On ty
 | `format:date-short` | `"15/01/2025"`                 |
 | `format:time`       | `"14:30"`                      |
 | `format:datetime`   | `"15 gen 2025, 14:30"`         |
-| `format:duration`   | number of minutes → `"1h 30m"` |
+| `format:duration`   | number of minutes â†’ `"1h 30m"` |
 
 **Array transforms:**
 
-| Transform   | `["a","b","c"]` → |
+| Transform   | `["a","b","c"]` â†’ |
 | ----------- | ----------------- |
 | `join:SEP`  | `"aSEPbSEPc"`     |
 | `count`     | `"3"` (string)    |
@@ -273,7 +273,7 @@ Applied left-to-right. Each transform receives the output of the previous. On ty
 | `last`      | `"c"`             |
 | `slice:1:2` | `["b"]`           |
 
-**Cast transforms:** `boolean`, `string`, `number` — standard coercion; `number` on NaN → `0` + warn.
+**Cast transforms:** `boolean`, `string`, `number` â€” standard coercion; `number` on NaN â†’ `0` + warn.
 
 ### 5.3 Condition Evaluation
 
@@ -309,7 +309,7 @@ When the trigger fires, the engine dispatches the action to the ActionDispatcher
 | `scroll-to`              | `scrollIntoView()` + offset              | `Scrollable.ensureVisible()`       |
 | `toggle-visibility`      | Toggle `display:none`                    | Toggle `Visibility`                |
 | `set-visibility`         | Set/remove `display:none`                | `Visibility(visible:)`             |
-| `toggle-class`           | `classList.toggle()`                     | State variable → widget appearance |
+| `toggle-class`           | `classList.toggle()`                     | State variable â†’ widget appearance |
 | `add-class`              | `classList.add()`                        | As above                           |
 | `remove-class`           | `classList.remove()`                     | As above                           |
 | `open-modal`             | Overlay at `z-index: theme.zIndex.modal` | Modal route / dialog               |
@@ -325,7 +325,7 @@ When the trigger fires, the engine dispatches the action to the ActionDispatcher
 | `send-analytics`         | Analytics event                          | Analytics event                    |
 | `set-var` / `toggle-var` | Runtime variable map                     | Engine state                       |
 
-Unresolvable `nodeId` → no-op + development warning (not an error at runtime).
+Unresolvable `nodeId` â†’ no-op + development warning (not an error at runtime).
 
 ### 6.2 Trigger Mapping
 
@@ -378,16 +378,16 @@ Enforced during the lint phase (document lifecycle step 3).
 | ------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | **R01** | error    | Every `ComponentNode.id` MUST be unique in the entire document (all pages + globals).                                                        |
 | **R02** | error    | Every `node.type` MUST be a value from the `ComponentType` enum. Unknown types render as empty containers with a dev-mode error placeholder. |
-| **R03** | error    | If `data.listField` is present, `children` MUST exist and contain ≥ 1 element.                                                               |
+| **R03** | error    | If `data.listField` is present, `children` MUST exist and contain â‰¥ 1 element.                                                               |
 | **R04** | warning  | `data.field` and `props.text` both present on the same node. `data.field` wins; static prop ignored.                                         |
 | **R05** | warning  | Action `nodeId` references a non-existent node. No-op at runtime.                                                                            |
 | **R06** | error    | `theme.colors` MUST contain all 30 required fields. No silent fallbacks.                                                                     |
 | **R07** | error    | `pages.home` MUST be present.                                                                                                                |
 | **R08** | error    | `type: "page-wrapper"` MUST be the root of a page; cannot be a child node.                                                                   |
-| **R09** | error    | `GradientDef.stops` MUST have ≥ 2 elements.                                                                                                  |
+| **R09** | error    | `GradientDef.stops` MUST have â‰¥ 2 elements.                                                                                                  |
 | **R10** | warning  | Transform type mismatch at runtime. Return input unchanged; continue pipeline.                                                               |
-| **R11** | —        | `_builder` fields MUST be stripped before rendering. Never used by rendering engines.                                                        |
-| **R12** | —        | `@webOnly` properties silently ignored by non-web engines. No warning, no error.                                                             |
+| **R11** | â€”        | `_builder` fields MUST be stripped before rendering. Never used by rendering engines.                                                        |
+| **R12** | â€”        | `@webOnly` properties silently ignored by non-web engines. No warning, no error.                                                             |
 | **R13** | error    | Responsive merge MUST be additive (deep merge), not replacement of the entire `style`/`layout` object.                                       |
 | **R14** | error    | `listField` child DataContexts are isolated. Mutations MUST NOT propagate to siblings or parent.                                             |
 | **R15** | warning  | Prototype `nodeId`/`pageId` references should exist. Missing references are no-ops at runtime.                                               |
@@ -426,7 +426,7 @@ An error in one node MUST NOT abort siblings or ancestors.
 `data.field` or `data.listField` path missing from DataContext:
 
 - Apply `data.fallback` if present.
-- Else: text nodes → empty string; other nodes → rendered without data injection.
+- Else: text nodes â†’ empty string; other nodes â†’ rendered without data injection.
 - Dev mode: warn with node ID, attempted path, available DataContext keys.
 
 ### 9.3 Unknown Component Types
@@ -455,12 +455,12 @@ Follows **Semantic Versioning** (`MAJOR.MINOR`):
 
 ```json
 {
-  "$schema": "https://ui-schema.Super-WebFlow.io/v1.0/template.schema.json",
+  "$schema": "https://aredegalli.it/super-webflow/v1.0/template.schema.json",
   "version": "1.0"
 }
 ```
 
-Engines MUST check `version` before processing. Unsupported version → error, refuse to render.
+Engines MUST check `version` before processing. Unsupported version â†’ error, refuse to render.
 
 ### 11.2 Engine Capabilities Declaration
 
@@ -480,28 +480,28 @@ Engines MUST support deprecated fields for at least one full MAJOR version post-
 
 ---
 
-## Appendix A — Component Compliance Tiers
+## Appendix A â€” Component Compliance Tiers
 
 Engines MUST implement Tier 1 and Tier 2 to be considered compliant.
 
-**Tier 1 — Required:**  
+**Tier 1 â€” Required:**  
 `container`, `section`, `row`, `column`, `grid`, `stack`,
 `heading`, `paragraph`, `text`, `image`, `button`, `link`,
 `divider`, `spacer`, `navbar`, `footer`
 
-**Tier 2 — Required for full feature parity:**  
+**Tier 2 â€” Required for full feature parity:**  
 `hero`, `service-card`, `pricing-card`, `testimonial`,
 `contact-form`, `booking-widget`, `photo-gallery`,
 `coach-stats`, `social-links`, `modal`
 
-**Tier 3 — Optional:**  
+**Tier 3 â€” Optional:**  
 All remaining `ComponentType` values. Omitted Tier 3 components render as empty containers with a dev-mode warning.
 
 Per-type props: see `Super-WebFlow-template.schema.d.ts` (authoritative TypeScript definition).
 
 ---
 
-## Appendix B — DataContext Shape
+## Appendix B â€” DataContext Shape
 
 The DataContext is a plain JSON object populated by the Super-WebFlow backend at runtime, conforming to the template's `dataSchema`. Example:
 
@@ -511,7 +511,7 @@ The DataContext is a plain JSON object populated by the Super-WebFlow backend at
     "fullName": "Mario Rossi",
     "tagline": "Forza e risultati, senza compromessi.",
     "avatar": "https://cdn.Super-WebFlow.io/avatars/mario.jpg",
-    "bio": "Personal trainer con 10 anni di esperienza…",
+    "bio": "Personal trainer con 10 anni di esperienzaâ€¦",
     "isPro": true,
     "services": [
       { "name": "Personal Training", "price": 80, "duration": 60 },
@@ -531,5 +531,6 @@ The DataContext is a plain JSON object populated by the Super-WebFlow backend at
 ---
 
 _End of Functional Specification v1.0_
+
 
 

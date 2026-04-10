@@ -1,0 +1,24 @@
+﻿{
+  "name": "@aredegalli/super-webflow-cli",
+  "version": "1.0.0",
+  "description": "Super WebFlow Contract Language â€” specification, validator, and examples",
+  "license": "MIT",
+  "main": "validator.js",
+  "bin": {
+    "ui-validate": "./cli.js"
+  },
+  "scripts": {
+    "test": "node --test validator.test.js",
+    "test:watch": "node --test --watch validator.test.js",
+    "validate": "node cli.js",
+    "check:examples": "node cli.js ../spec/v1.0/examples/template.json ../spec/v1.0/examples/website.json"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+
